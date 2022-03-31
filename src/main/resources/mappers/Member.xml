@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="Member">
+
+	<!-- 쿼리를 xml로 작성하고 id:식별값  
+		  parameterType:우리가 전달할값 
+	     resultType : 받아오는값  -->
+	     
+	<!-- if test="key=='1'"  - 이렇게 쓰면 안된다 인식안된다 -->
+	
+	
+	
+	
+	
+	<select id="Member_getInfo" parameterType="MemberDto" resultType="MemberDto">
+		select 	 
+		    A.user_seq
+			,A.user_id
+			,A.user_password
+			,A.user_name
+			,A.user_image1
+			,A.user_image2
+			,A.user_address1
+			,A.user_address2
+			,A.user_mail
+			,A.user_phone
+			,A.user_wdate
+			,A.user_active
+			,A.user_level
+			,A.user_business
+		from p2_member A
+		where user_id=#{user_id} 
+	</select>
+	
+	
+	<insert id="Member_insert" parameterType="MemberDto" >
+	INSERT INTO p2_member
+	(
+		user_id
+		,user_password
+		,user_name
+		,user_image1
+		,user_image2
+		,user_address1
+		,user_address2
+		,user_mail
+		,user_phone
+		,user_business
+	)
+	VALUES
+	(
+
+		#{user_id}
+		,#{user_password}
+		,#{user_name}
+		,#{user_image1}
+		,#{user_image2}
+		,#{user_address1}
+		,#{user_address2}
+		,#{user_mail}
+		,#{user_phone}
+		,#{user_business}
+	)
+	</insert>
+	
+	<select id="Member_findId" parameterType="MemberDto" resultType="MemberDto">
+		select 	
+			user_id 
+			,user_password
+			,user_name
+			,user_mail
+			,user_phone 
+		from p2_member
+		where user_mail=#{user_mail} and user_phone=#{user_phone} 
+	</select>
+	
+	
+	
+	<select id="Member_findPassword" parameterType="MemberDto" resultType="MemberDto">
+		select 	
+		    user_id
+			,user_password
+			,user_name
+			,user_mail
+			,user_phone 
+		from p2_member
+		where user_mail=#{user_mail} and user_id=#{user_id} 
+	</select>
+			
+	<update id="Member_updateInfo" parameterType="MemberDto" >
+		update p2_member set 
+						user_password = #{user_password}
+						,user_mail=#{user_mail}
+						,user_phone=#{user_phone}
+						,user_image1=#{user_image1}
+						,user_image2=#{user_image2}
+						,user_address1=#{user_address1}
+						,user_address2=#{user_address2}
+						,user_business=#{user_business}
+						
+		where user_id=#{user_id}
+		
+
+	</update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
