@@ -32,6 +32,8 @@ public class MemberDto extends BaseDto{
 	private String user_active;			//사용자 활동상태
 	private String user_level="";		//사용자 등급
 	private String user_business="";	//사업자 등록증
+	private String user_birth="";
+	
 	
 	
 	

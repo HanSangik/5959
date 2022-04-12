@@ -20,6 +20,7 @@
 		    A.user_seq
 			,A.user_id
 			,A.user_password
+			,A.user_birth
 			,A.user_name
 			,A.user_image1
 			,A.user_image2
@@ -36,6 +37,8 @@
 	</select>
 	
 	
+	
+	
 	<insert id="Member_insert" parameterType="MemberDto" >
 	INSERT INTO p2_member
 	(
@@ -49,6 +52,7 @@
 		,user_mail
 		,user_phone
 		,user_business
+		,user_birth
 	)
 	VALUES
 	(
@@ -63,6 +67,7 @@
 		,#{user_mail}
 		,#{user_phone}
 		,#{user_business}
+		,#{user_birth}
 	)
 	</insert>
 	
@@ -100,7 +105,7 @@
 						,user_address1=#{user_address1}
 						,user_address2=#{user_address2}
 						,user_business=#{user_business}
-						
+						,user_birth=#{user_birth}
 		where user_id=#{user_id}
 		
 
